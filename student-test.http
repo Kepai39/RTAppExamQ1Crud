@@ -12,7 +12,9 @@ Content-Type: application/json
 
 {
   "name": "Charlie",
-  "age": 22
+  "grade": "B+",
+  "email": "asdsa@asf"
+
 }
 
 # GET a specific student by ID
@@ -27,7 +29,8 @@ Content-Type: application/json
 
 {
   "name": "Alice Updated",
-  "age": 26
+  "grade": "B+",
+  "email": "SADASDSA@safasfas"
 }
 
 ###
