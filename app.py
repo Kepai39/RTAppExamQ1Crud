@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 
 students = [
-    {"id": 1, "name": "Alice", "age": 25},
+    {"id": 1, "name": "Alice", "grade": "B+", "email": "sdaasd@laskflask"},
 ]
 
 # Define route to handle requests to the root URL ('/')
@@ -23,12 +23,12 @@ def health_check():
 
 # It is used to map a specific URL (route) to a function in your Flask application.
 @app.route('/students', methods=['GET'])
-def get_users():
-    return jsonify(users), 200  # 200 is the HTTP status code for 'OK'
+def get_students():
+    return jsonify(students), 200  # 200 is the HTTP status code for 'OK'
 
 # When the client sends a GET request to /users/<id>, this function will return the user with the specified ID.
 @app.route('/students/<int:student_id>', methods=['GET'])
-def get_user(student_id):
+def get_student(student_id):
     # Using a list comprehension to find the user by ID
     student = next((student for student in students if student['id'] == student_id), None)
     if student is None:
@@ -46,12 +46,13 @@ def create_student():
     # Create a new user dictionary. Assign the next available ID by incrementing the highest current ID.
     # If no users exist, the new ID will be 1.
     new_student = {
-        'id': users[-1]['id'] + 1 if users else 1,
+        'id': students[-1]['id'] + 1 if users else 1,
         'name': request.json['name'],  # The name is provided in the POST request body
-        'age': request.json.get('age', 0)  # The age is optional; default is 0 if not provided
+        'grade': request.json['grade'],  # The name is provided in the POST request body
+        'email': request.json['email'],  # The email is provided in the POST request body
     }
     # Add the new user to the users list
-    users.append(new_student)
+    students.append(new_student)
     return jsonify(new_student), 201  # 201 is the HTTP status code for 'Created'
 
 # Route to update an existing user (PUT request)
@@ -70,14 +71,16 @@ def update_student(student_id):
     # Update the user's data based on the request body
     # If a field is not provided in the request, keep the existing value
     student['name'] = request.json.get('name', student['name'])
-    student['age'] = request.json.get('age', student['age'])
-    return jsonify(user), 200  # Return the updated user data with a 200 status code (OK)
+    student['grade'] = request.json.get('grade', student['grade'])
+    student['email'] = request.json.get('email', student['email'])
+
+    return jsonify(student), 200  # Return the updated user data with a 200 status code (OK)
 
 # Route to delete a user (DELETE request)
 # When the client sends a DELETE request to /users/<id>, this function will remove the user with that ID.
 @app.route('/users/<int:user_id>', methods=['DELETE'])
-def delete_user(user_id):
-    global users  # Reference the global users list
+def delete_student(student_id):
+    global students  # Reference the global users list
     # Rebuild the users list, excluding the user with the specified ID
     students = [student for student in students if student['id'] != student_id]
     return '', 204  # 204 is the HTTP status code for 'No Content', indicating the deletion was successful
