@@ -18,3 +18,9 @@
 - requirements.txt: List of Python dependencies 
 - student-test.http: Test the REST API using the REST Client extension in Visual Studio Code
 - README.md: Documentation
+
+
+## Deploying to Azure app 
+1. deployed web app
+2. connected the test to the web app
+3. test
