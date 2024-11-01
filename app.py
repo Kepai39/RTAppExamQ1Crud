@@ -28,7 +28,7 @@ def get_students():
 
 # When the client sends a GET request to /users/<id>, this function will return the user with the specified ID.
 @app.route('/students/<int:student_id>', methods=['GET'])
-def get_student(student_id):
+def get_students(student_id):
     # Using a list comprehension to find the user by ID
     student = next((student for student in students if student['id'] == student_id), None)
     if student is None:
@@ -38,7 +38,7 @@ def get_student(student_id):
 # Route to create a new user (POST request)
 # When the client sends a POST request to /users with user data, this function will add the new user to the list.
 @app.route('/students', methods=['POST'])
-def create_student():
+def create_students():
     # If the request body is not in JSON format or if the 'name' field is missing, return a 400 error (Bad Request)
     if not request.json or not 'name' in request.json:
         abort(400)
@@ -52,6 +52,7 @@ def create_student():
         'email': request.json.get('email', "asd@dafa")  # The age is optional; default is 0 if not provided
 
     }
+    
     # Add the new user to the users list
     students.append(new_student)
     return jsonify(new_student), 201  # 201 is the HTTP status code for 'Created'
@@ -59,7 +60,7 @@ def create_student():
 # Route to update an existing user (PUT request)
 # When the client sends a PUT request to /users/<id> with updated user data, this function will update the user.
 @app.route('/students/<int:student_id>', methods=['PUT'])
-def update_student(student_id):
+def update_students(student_id):
     # Find the user by their ID
     student = next((student for student in students if student['id'] == student_id), None)
     if student is None:
@@ -80,7 +81,7 @@ def update_student(student_id):
 # Route to delete a user (DELETE request)
 # When the client sends a DELETE request to /users/<id>, this function will remove the user with that ID.
 @app.route('/students/<int:student_id>', methods=['DELETE'])
-def delete_student(student_id):
+def delete_students(student_id):
     global students  # Reference the global users list
     # Rebuild the users list, excluding the user with the specified ID
     students = [student for student in students if student['id'] != student_id]

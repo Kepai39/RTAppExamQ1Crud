@@ -7,7 +7,7 @@ Accept: application/json
 ###
 
 # POST create a new user
-POST http://restapp-hwfwazenatceabd8.canadacentral-01.azurewebsites.net/students
+POST  http://restapp-hwfwazenatceabd8.canadacentral-01.azurewebsites.net/students
 Content-Type: application/json
 
 {
