@@ -38,7 +38,7 @@ def get_student(student_id):
 # Route to create a new user (POST request)
 # When the client sends a POST request to /users with user data, this function will add the new user to the list.
 @app.route('/students', methods=['POST'])
-def create_student():
+def create_user():
     # If the request body is not in JSON format or if the 'name' field is missing, return a 400 error (Bad Request)
     if not request.json or not 'name' in request.json:
         abort(400)
@@ -48,8 +48,9 @@ def create_student():
     new_student = {
         'id': students[-1]['id'] + 1 if students else 1,
         'name': request.json['name'],  # The name is provided in the POST request body
-        'grade': request.json['grade'],  # The name is provided in the POST request body
-        'email': request.json['email'],  # The email is provided in the POST request body
+        'grade': request.json.get('grade', "F"),  # The age is optional; default is 0 if not provided
+        'email': request.json.get('email', "asd@dafa")  # The age is optional; default is 0 if not provided
+
     }
     # Add the new user to the users list
     students.append(new_student)
