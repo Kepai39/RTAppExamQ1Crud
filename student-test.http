@@ -36,4 +36,4 @@ Content-Type: application/json
 ###
 
 # DELETE a user by ID
-DELETE http://localhost:8000/students/1
+DELETE http://restapp-hwfwazenatceabd8.canadacentral-01.azurewebsites.net/students/1
