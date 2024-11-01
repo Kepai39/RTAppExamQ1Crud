@@ -57,7 +57,7 @@ def create_student():
 
 # Route to update an existing user (PUT request)
 # When the client sends a PUT request to /users/<id> with updated user data, this function will update the user.
-@app.route('/users/<int:user_id>', methods=['PUT'])
+@app.route('/students/<int:student_id>', methods=['PUT'])
 def update_student(student_id):
     # Find the user by their ID
     student = next((student for student in students if student['id'] == student_id), None)
@@ -78,7 +78,7 @@ def update_student(student_id):
 
 # Route to delete a user (DELETE request)
 # When the client sends a DELETE request to /users/<id>, this function will remove the user with that ID.
-@app.route('/users/<int:user_id>', methods=['DELETE'])
+@app.route('/students/<int:student_id>', methods=['DELETE'])
 def delete_student(student_id):
     global students  # Reference the global users list
     # Rebuild the users list, excluding the user with the specified ID
