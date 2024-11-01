@@ -1,13 +1,13 @@
 
 # GET all students
-GET http://localhost:8000/students
+GET http://restapp-hwfwazenatceabd8.canadacentral-01.azurewebsites.net/students
 Accept: application/json
 
 
 ###
 
 # POST create a new user
-POST http://localhost:8000/students
+POST http://restapp-hwfwazenatceabd8.canadacentral-01.azurewebsites.net/students
 Content-Type: application/json
 
 {
@@ -18,13 +18,13 @@ Content-Type: application/json
 }
 
 # GET a specific student by ID
-GET http://localhost:8000/students/1
+GET http://restapp-hwfwazenatceabd8.canadacentral-01.azurewebsites.net/students/1
 Accept: application/json
 
 ###
 
 # PUT update a user by ID
-PUT http://localhost:8000/students/1
+PUT http://restapp-hwfwazenatceabd8.canadacentral-01.azurewebsites.net/students/1
 Content-Type: application/json
 
 {
