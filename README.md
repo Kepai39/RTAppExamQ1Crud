@@ -9,7 +9,7 @@
  
 ## running locally
 1.    pip install -r requirements.txt
-2.    python app.py
+2.    py app.py  (that is for my computer to run, some use python app.py)
 3.    The API will be running at http://127.0.0.1:8000
 
 ## Project Structure
