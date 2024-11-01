@@ -46,7 +46,7 @@ def create_student():
     # Create a new user dictionary. Assign the next available ID by incrementing the highest current ID.
     # If no users exist, the new ID will be 1.
     new_student = {
-        'id': students[-1]['id'] + 1 if users else 1,
+        'id': students[-1]['id'] + 1 if students else 1,
         'name': request.json['name'],  # The name is provided in the POST request body
         'grade': request.json['grade'],  # The name is provided in the POST request body
         'email': request.json['email'],  # The email is provided in the POST request body
